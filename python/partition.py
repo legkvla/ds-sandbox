@@ -13,8 +13,8 @@ def partitionv(list, mapping_f):
     res.append(current_partition)
     return res
 
-case1 = ['f', 'f', 'f', 't', 't']
+case1 = ['f', 'f', 'f', 't', 't', 'f', 't', 't', 't']
 case2 = ['f', 'f', 'f', 't']
 
-print(partitionv(case1, lambda x: x == 't'))
+print(list(map(lambda t: len(t), filter(lambda t: t[0] == 't', partitionv(case1, lambda x: x == 't')))))
 print(partitionv(case2, lambda x: x == 't'))
