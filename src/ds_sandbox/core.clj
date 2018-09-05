@@ -12,17 +12,10 @@
   )
 
 (defn calc []
-  (->> (partition-by txor data)
+  (->> data
+    (map #(conj %2 %1) (range))
+    (partition-by txor)
     (filter #(-> % first txor))
-    (map #(count %))
+    (map (fn [t] [(-> t first (get 2)) (count t)]))
     )
   )
-
-  (defn calc2 []
-    (map #(count %)
-      (filter
-        #(-> % first txor)
-        (partition-by txor data)
-        )
-      )
-    )
